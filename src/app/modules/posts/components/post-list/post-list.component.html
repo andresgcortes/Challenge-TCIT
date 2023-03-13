@@ -1,0 +1,21 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let post of items$ | async">
+        <th scope="row">{{ post.id }}</th>
+        <td>{{ post.name }}</td>
+        <td>{{ post.description }}</td>
+        <td>
+          <div (click)="deletePost(post.id)" >
+            Eliminar
+          </div></td>
+      </tr>
+    </tbody>
+</table>

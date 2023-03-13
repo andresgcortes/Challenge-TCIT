@@ -1,0 +1,26 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+            <b *ngIf="!(loading$ | async)" >Cargando....</b>
+        </div>
+    </div>    
+
+    <div class="row pt-5">
+        <div class="col">
+            <app-post-search></app-post-search>
+        </div>
+    </div>    
+    
+    <div class="row py-4">
+        <div class="col">
+            <app-post-list></app-post-list>
+        </div>
+    </div>    
+
+    <div class="row">
+        <div class="col">
+            <app-post-form></app-post-form>
+        </div>
+    </div>
+</div>
