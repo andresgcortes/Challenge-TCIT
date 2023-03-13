@@ -12,19 +12,27 @@ import { Router } from '@angular/router';
 export class PostsEffects {
 
     loadPosts$ = createEffect(() => this.actions$.pipe(
-        ofType(postActionTypes.loadPosts),
-        concatMap(() => this.postsService.getDataApi()),
-            map(posts => postActionTypes.postsLoaded({posts}))
-        )
+      ofType(postActionTypes.loadPosts),
+      concatMap(() => this.postsService.getDataApi()),
+          map(posts => postActionTypes.postsLoaded({posts}))
+      )
     );
 
     deletePost$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(postActionTypes.deletePost),
-      concatMap((action) => this.postsService.DeleteDataApi(action.postId))
-    ),
-    {dispatch: false}
-  );
+      this.actions$.pipe(
+        ofType(postActionTypes.deletePost),
+        concatMap((action) => this.postsService.deleteDataApi(action.postId))
+      ),
+      {dispatch: false}
+    );
+
+    createPost$ = createEffect(() =>
+      this.actions$.pipe(
+        ofType(postActionTypes.createPost),
+        concatMap((action) => this.postsService.createDataApi(action))
+      ),
+      {dispatch: false}
+    );
 
     constructor(
         private actions$: Actions,

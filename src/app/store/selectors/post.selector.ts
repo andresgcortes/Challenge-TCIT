@@ -7,8 +7,6 @@ import { EntityState } from '@ngrx/entity';
 
 export const PostFeatureSelector = createFeatureSelector<PostState>('posts');
 
-export const selectAllBooks = (state: AppState) => state.EntityState;
-
 export const getAllPosts = createSelector(
     PostFeatureSelector,
     selectAll
@@ -19,7 +17,3 @@ export const PostsLoaded = createSelector(
     state => state.postsLoaded
 );
 
-export const selectPostsLoaded = createSelector(
-    selectAll,
-   state => state.filter(post => post.name === 'HOME') 
-);

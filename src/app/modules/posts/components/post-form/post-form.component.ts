@@ -24,6 +24,8 @@ export class PostFormComponent {
 
     this.store.dispatch(createPost({posts}));
 
+    submittedForm.reset();
+    
   }
 
 }

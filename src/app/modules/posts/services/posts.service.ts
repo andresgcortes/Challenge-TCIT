@@ -7,7 +7,6 @@ import { delay } from 'rxjs/operators'
 })
 export class PostsService {
 
-
     data = [
         {
             id:"1",
@@ -81,9 +80,18 @@ export class PostsService {
 
     }
 
-    DeleteDataApi(id:string): Observable<any> {
+    deleteDataApi(id:string): Observable<any> {
 
-        debugger;
+        //Delete data
+        return of(this.data).pipe(
+            delay(1500)
+        )
+
+    }
+
+    createDataApi(data: any): Observable<any> {
+
+        //Delete data
         return of(this.data).pipe(
             delay(1500)
         )
