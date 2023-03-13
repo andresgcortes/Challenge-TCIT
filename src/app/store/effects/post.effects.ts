@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
-import { EMPTY } from "rxjs";
-import { map, mergeMap, catchError, concatMap, tap } from 'rxjs/operators'
+import { map, concatMap } from 'rxjs/operators'
 import { PostsService } from '../../modules/posts/services/posts.service';
 
-import { postActionTypes, postsLoaded } from '../actions/posts.actions';
+import { postActionTypes } from '../actions/posts.actions';
 import { Router } from '@angular/router';
 
 @Injectable()

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { postActionTypes } from 'src/app/store/actions/posts.actions';
-import { getAllPosts } from 'src/app/store/selectors/post.selector';
+import { getAllPosts, getFilteredPosts } from 'src/app/store/selectors/post.selector';
 import { AppState } from '../../../../store/app.state';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-post-list',
@@ -13,6 +14,7 @@ import { AppState } from '../../../../store/app.state';
 export class PostListComponent {
 
   items$: Observable<any> = new Observable();
+  data$: Observable<string> = new Observable();
   
   constructor(
     private store: Store<AppState>
@@ -20,10 +22,22 @@ export class PostListComponent {
 
   ngOnInit(){
     this.items$ = this.store.select(getAllPosts);
+
+    const data2 = this.items$.subscribe(
+      posts => {
+        this.data$ = posts.filter((post: any) => { post.id === '2'});
+      }
+    ) 
+
+    console.log(data2)
+    
+    this.data$ = this.store.pipe(
+      select(getFilteredPosts)
+    );
   }
 
   deletePost(postId: string){
     this.store.dispatch(postActionTypes.deletePost({postId}));
   }
-
+    
 }

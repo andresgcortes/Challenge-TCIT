@@ -22,7 +22,12 @@ export const deletePost = createAction(
 
 export const searchPost = createAction(
     '[Posts List Search] Search Post',
-    props<{ posts: PostModel[], search: { filterBy : []; query: string }}>()
+    props<{ posts: PostModel[]}>()
+);
+
+export const search = createAction(
+    '[Search string] Search Post',
+    props<{ search: string}>()
 );
 
 export const postActionTypes = {
@@ -30,5 +35,6 @@ export const postActionTypes = {
     postsLoaded,
     createPost,
     deletePost,
-    searchPost
+    searchPost,
+    search
 };
